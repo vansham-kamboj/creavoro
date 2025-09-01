@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cravoro - Made To Crave</title>
+    <favicon href="./favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- AOS (Animate on Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS for neon effect, font families, and custom animations -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .text-neon {
+            text-shadow:
+                0 0 5px rgba(247, 181, 0, 0.9),
+                0 0 10px rgba(247, 181, 0, 0.9),
+                0 0 20px rgba(247, 181, 0, 0.9),
+                0 0 40px rgba(255, 165, 0, 0.7),
+                0 0 80px rgba(255, 165, 0, 0.7);
+        }
+        /* Custom class for the header when scrolled */
+        .header-scrolled {
+            background-color: #5C3D2E;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        /* Ken Burns effect for hero background */
+        .hero-bg-animate {
+            animation: kenburns 20s ease-out forwards;
+        }
+        @keyframes kenburns {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        /* Instagram Feed Hover Effect */
+        .insta-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .group:hover .insta-overlay {
+            opacity: 1;
+        }
+        /* Custom styling for embedded map */
+        .map-embed {
+            filter: grayscale(100%) invert(90%) contrast(80%);
+        }
+    </style>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cravoro-dark-brown': '#5C3D2E', // From your logo
+                        'cravoro-cream': '#F5E8DD',     // A complementary light color
+                        'cravoro-gold': '#F7B500',      // Inspired by logo text & neon
+                        'cravoro-light-brown': '#A0765E' // A mid-tone for text
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cravoro-cream text-cravoro-dark-brown">
+
+    <!-- Header -->
+    <header id="main-header" class="bg-cravoro-dark-brown/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-cravoro-gold font-serif">Cravoro</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#story" class="text-cravoro-cream hover:text-cravoro-gold transition duration-300">Our Story</a>
+                <a href="#promise" class="text-cravoro-cream hover:text-cravoro-gold transition duration-300">Our Promise</a>
+                <a href="#menu" class="text-cravoro-cream hover:text-cravoro-gold transition duration-300">Cravings</a>
+                <a href="#vibe" class="text-cravoro-cream hover:text-cravoro-gold transition duration-300">The Vibe</a>
+                <a href="#visit" class="bg-cravoro-gold text-cravoro-dark-brown font-bold py-2 px-5 rounded-full hover:bg-opacity-90 transition duration-300">Visit Us</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-cravoro-cream z-50">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full h-screen bg-cravoro-dark-brown flex flex-col items-center justify-center space-y-8">
+            <a href="#story" class="text-cravoro-cream text-2xl hover:text-cravoro-gold transition duration-300">Our Story</a>
+            <a href="#promise" class="text-cravoro-cream text-2xl hover:text-cravoro-gold transition duration-300">Our Promise</a>
+            <a href="#menu" class="text-cravoro-cream text-2xl hover:text-cravoro-gold transition duration-300">Cravings</a>
+            <a href="#vibe" class="text-cravoro-cream text-2xl hover:text-cravoro-gold transition duration-300">The Vibe</a>
+            <a href="#visit" class="text-cravoro-cream text-2xl hover:text-cravoro-gold transition duration-300">Visit Us</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="h-screen bg-cover bg-center flex items-center justify-center bg-black overflow-hidden relative">
+        <div class="absolute inset-0 hero-bg-animate bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2940&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="text-center z-10 p-6" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white font-serif tracking-tight leading-tight">
+                Every Great Story <br/> Starts with a <span class="text-cravoro-gold text-neon">Craving</span>.
+            </h1>
+            <p class="text-cravoro-cream text-lg md:text-xl mt-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                This is more than a cafe. It's the beginning of your next chapter, the backdrop to your conversations, and a home for your cravings.
+            </p>
+            <a href="#menu" class="mt-8 inline-block bg-cravoro-gold text-cravoro-dark-brown font-bold py-3 px-8 rounded-full text-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105" data-aos="fade-up" data-aos-delay="400">Find Your Flavor</a>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="py-24 bg-cravoro-cream overflow-hidden">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative" data-aos="fade-right">
+                <div class="bg-cravoro-light-brown/20 w-full h-full rounded-lg absolute -top-4 -left-4 transform rotate-2"></div>
+                <img src="./Bg-image.png" alt="Two friends laughing in a cafe" class="rounded-lg shadow-2xl relative z-10 w-full object-cover">
+            </div>
+            <div class="text-left" data-aos="fade-left">
+                <h2 class="text-4xl font-bold font-serif text-cravoro-dark-brown mb-4">A Friendship, Simmered to Perfection.</h2>
+                <p class="text-lg text-cravoro-light-brown mb-4">
+                    Cravoro didn't start in a boardroom. It started on a lazy Sunday afternoon between two lifelong friends, over a cup of coffee that was good, but not *great*. We dreamed of a place where the coffee was as warm as the welcome and the food felt like a hug.
+                </p>
+                <p class="text-lg text-cravoro-light-brown">
+                    We built Cravoro to be that place—a cornerstone for the community, a spot for first dates, late-night study sessions, and reunions. It's our story of friendship, built for you to create your own.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Promise Section -->
+    <section id="promise" class="py-24 bg-cravoro-dark-brown">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold font-serif text-white mb-12" data-aos="fade-up">Our Simple Promise</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-white" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-leaf fa-3x text-cravoro-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold font-serif mb-2">Quality Ingredients</h3>
+                    <p class="text-cravoro-cream">From farm-fresh produce to artisan coffee beans, we never compromise on quality. You can taste the difference.</p>
+                </div>
+                <div class="text-white" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-couch fa-3x text-cravoro-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold font-serif mb-2">Cozy Atmosphere</h3>
+                    <p class="text-cravoro-cream">We've designed every corner to be your comfortable escape. A place to relax, work, or connect.</p>
+                </div>
+                <div class="text-white" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-users fa-3x text-cravoro-gold mb-4"></i>
+                    <h3 class="text-2xl font-bold font-serif mb-2">Community Hub</h3>
+                    <p class="text-cravoro-cream">More than customers, you're our neighbors. Cravoro is a place for everyone to feel welcome.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-cravoro-cream">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold font-serif text-cravoro-dark-brown mb-12" data-aos="fade-up">Made To Be Craved</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:shadow-cravoro-gold/30" data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=2864&auto=format&fit=crop" alt="The Cravoro Burger" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-serif">The Cravoro Burger</h3>
+                        <p class="text-cravoro-light-brown mt-2">The legend. Juicy patty, secret sauce, and pure happiness.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:shadow-cravoro-gold/30" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://content.jdmagicbox.com/comp/gurgaon/p5/011pxx11.xx11.200305073502.k2p5/catalogue/fries-please-cafe-gurgaon-sector-50-gurgaon-fast-food-qxyv3ukvl8.jpg" alt="Loaded Fries" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-serif">Friendship Fries</h3>
+                        <p class="text-cravoro-light-brown mt-2">Crispy, golden, and loaded. Perfect for sharing (or not).</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:shadow-cravoro-gold/30" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?q=80&w=2940&auto=format&fit=crop" alt="Thick Shake" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-serif">The Dream Shake</h3>
+                        <p class="text-cravoro-light-brown mt-2">Creamy, dreamy, and exactly what your day needs.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:shadow-cravoro-gold/30" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=2940&auto=format&fit=crop" alt="Morning Coffee" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold font-serif">The Daily Ritual</h3>
+                        <p class="text-cravoro-light-brown mt-2">Our signature coffee blend. Your perfect start or reset.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="community" class="py-24 bg-cravoro-dark-brown">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold font-serif text-white mb-12" data-aos="fade-up">Stories From Our Tables</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div class="bg-cravoro-cream p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-quote-left text-cravoro-gold text-2xl mb-4"></i>
+                    <p class="text-cravoro-light-brown italic">"This is our weekly spot. We've celebrated birthdays, new jobs, and just gotten through tough weeks here. It feels like a second home."</p>
+                    <p class="font-bold mt-4 text-cravoro-dark-brown">- Priya S.</p>
+                </div>
+                <div class="bg-cravoro-cream p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-quote-left text-cravoro-gold text-2xl mb-4"></i>
+                    <p class="text-cravoro-light-brown italic">"I met my co-founder here! We sketched out our entire business plan on one of their napkins. The creative energy (and the coffee) is amazing."</p>
+                    <p class="font-bold mt-4 text-cravoro-dark-brown">- Rohan M.</p>
+                </div>
+                <div class="bg-cravoro-cream p-8 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-quote-left text-cravoro-gold text-2xl mb-4"></i>
+                    <p class="text-cravoro-light-brown italic">"The Cravoro Burger is genuinely the best burger in Ahmedabad. No contest. My friends and I have a constant craving for it."</p>
+                    <p class="font-bold mt-4 text-cravoro-dark-brown">- Anjali D.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Join the Vibe Section -->
+    <section id="vibe" class="py-24 bg-cravoro-cream">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold font-serif text-cravoro-dark-brown mb-4" data-aos="fade-up">Join The Vibe</h2>
+            <p class="text-lg text-cravoro-light-brown mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Follow our story <a href="#" class="text-cravoro-dark-brown font-bold hover:underline">@cravorocafe</a> and share your moments with #CravoroStories.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#" class="group relative aspect-square overflow-hidden rounded-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=2837&auto=format&fit=crop" alt="Latte art" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="insta-overlay absolute inset-0 flex items-center justify-center"><i class="fab fa-instagram text-white text-4xl"></i></div>
+                </a>
+                <a href="#" class="group relative aspect-square overflow-hidden rounded-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://www.crunchtimekitchen.com/wp-content/uploads/2018/05/Smoked-Trout-Breakfast-Spread-800x556.jpg" alt="Breakfast spread" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="insta-overlay absolute inset-0 flex items-center justify-center"><i class="fab fa-instagram text-white text-4xl"></i></div>
+                </a>
+                <a href="#" class="group relative aspect-square overflow-hidden rounded-lg" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://www.spendwithpennies.com/wp-content/uploads/2022/09/Avocado-Toast-SpendWithPennies-1.jpg" alt="Avocado toast" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="insta-overlay absolute inset-0 flex items-center justify-center"><i class="fab fa-instagram text-white text-4xl"></i></div>
+                </a>
+                <a href="#" class="group relative aspect-square overflow-hidden rounded-lg" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?q=80&w=2864&auto=format&fit=crop" alt="Friends laughing at a cafe table" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="insta-overlay absolute inset-0 flex items-center justify-center"><i class="fab fa-instagram text-white text-4xl"></i></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Us Section -->
+    <section id="visit" class="bg-cravoro-dark-brown">
+        <div class="container mx-auto grid md:grid-cols-2">
+            <div class="p-12 flex flex-col justify-center" data-aos="fade-right">
+                <h2 class="text-4xl font-bold font-serif text-white mb-4">Find Your Way to Cravoro</h2>
+                <p class="text-lg text-cravoro-cream mb-8">Your next great story (or at least, a great cup of coffee) is waiting for you right here.</p>
+                <div class="space-y-6 text-cravoro-cream">
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt fa-fw text-cravoro-gold mt-1 mr-4"></i>
+                        <div>
+                            <h3 class="font-bold text-lg">Address</h3>
+                            <p>VR One, Touch, opposite L&T N.H.8, knowledge city, Vadodara, Gujarat 390019</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-clock fa-fw text-cravoro-gold mt-1 mr-4"></i>
+                        <div>
+                            <h3 class="font-bold text-lg">Hours</h3>
+                            <p>10:00 AM - 11:00 PM, Every Day</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-80 md:h-full" data-aos="zoom-in-left">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3340.3374289817875!2d73.25375480000001!3d22.3085389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcfab503ec043%3A0x705d7d02a0299bbb!2sVR%20One%20-%20Commercial%20Business%20Center!5e1!3m2!1sen!2sin!4v1756747065208!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cravoro-dark-brown text-cravoro-cream border-t border-cravoro-light-brown/20">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p class="text-xl font-bold font-serif text-cravoro-gold mb-2">Cravoro</p>
+            <div class="flex justify-center space-x-6 my-4">
+                <a href="https://www.instagram.com/cravoro_/" class="text-cravoro-cream hover:text-cravoro-gold transition duration-300"><i class="fab fa-instagram fa-2x"></i></a>
+            </div>
+            <p>&copy; 2025 Cravoro Cafe. All Rights Reserved.</p>
+            <p class="text-sm text-cravoro-light-brown">Crafted with love by <a href="https://techez.in">Techez</a>.</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="hidden fixed bottom-8 right-8 bg-cravoro-gold text-cravoro-dark-brown w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-50 hover:bg-opacity-90 transition-all">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true, 
+        });
+
+
+        const header = document.getElementById('main-header');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuButton.querySelector('i');
+
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            } else {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-times');
+            }
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            });
+        });
+
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+
